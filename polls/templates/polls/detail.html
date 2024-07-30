@@ -1,0 +1,53 @@
+<head>
+    <title>Details</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&display=swap" rel="stylesheet">
+</head>
+<h1><a href="{% url 'polls:index' %}">Polls</a> -> {{ question.question_text }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'polls:vote' question.id %}" method="post">
+{% csrf_token %}
+{% for choice in question.choice_set.all %}
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+    <label class="form-check-label" for="choice{{ forloop.counter }}">
+        {{ choice.choice_text }}
+    </label>
+</div>
+{% endfor %}
+<div class='form-check'><input type="submit" value="Vote"></div>
+</form>
+<footer>
+    <p>Author: Kabir Menghrajani</p>
+    <p><a href="mailto:km5qte@virginia.edu">km5qte@virginia.edu</a></p>
+</footer>
+<style>
+    body{
+        background-color: aquamarine;
+    }
+    h1{
+        color: navy;
+        text-align: center;
+        font-size: xx-large;
+        font-family: 'Akaya Kanadaka', cursive;
+    }
+    .form-check, p{
+        color: navy;
+        text-align: center;
+        font-size: x-large;
+        font-family: 'Akaya Kanadaka', cursive;
+        list-style-position: inside;
+    }
+    footer{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+</style>

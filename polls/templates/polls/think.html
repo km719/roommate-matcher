@@ -1,0 +1,51 @@
+<head>
+    <title>Submit a Thought</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&display=swap" rel="stylesheet">
+</head>
+<div class="blank-space"></div>
+<form action="{% url 'polls:thinking' %}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="key">Enter your thought title.</label>
+        <textarea class="form-control" id="key" rows="1" name="title"></textarea>
+    </div>
+    <div class="blank-space"></div>
+    <div class="form-group">
+        <label for="val">Whats on your mind?</label>
+        <textarea class="form-control" id="val" rows="5" name="thought_text"></textarea>
+    </div>
+    <div class="blank-space"></div>
+    <div class="form-group">
+        <input type="submit" value="Think">
+    </div>
+</form>
+<footer>
+    <p>Author: Kabir Menghrajani</p>
+    <p><a href="mailto:km5qte@virginia.edu">km5qte@virginia.edu</a></p>
+</footer>
+<style>
+    body{
+        background-color: aquamarine;
+    }
+    .form-group, footer{
+        color: navy;
+        text-align: center;
+        font-size: xx-large;
+        font-family: 'Akaya Kanadaka', cursive;
+    }
+    .blank-space{
+        height: 50px;
+    }
+    footer{
+        font-size: x-large;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+</style>

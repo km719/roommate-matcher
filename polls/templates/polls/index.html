@@ -1,0 +1,55 @@
+<head>
+    <title>Polls</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&display=swap" rel="stylesheet">
+</head>
+<h2>Available polls:</h2>
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+
+<footer>
+    <p>Author: Kabir Menghrajani</p>
+    <p><a href="mailto:km5qte@virginia.edu">km5qte@virginia.edu</a></p>
+</footer>
+<style>
+    body{
+        background-color: aquamarine;
+    }
+    h2{
+        color: navy;
+        text-align: center;
+        font-size: xx-large;
+        font-family: 'Akaya Kanadaka', cursive;
+    }
+    li, footer, p{
+        color: navy;
+        text-align: center;
+        font-size: x-large;
+        font-family: 'Akaya Kanadaka', cursive;
+        list-style-position: inside;
+    }
+    li{
+        margin-left: -50px;
+    }
+
+    .blank-space{
+        height: 50px;
+    }
+    footer{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+</style>
